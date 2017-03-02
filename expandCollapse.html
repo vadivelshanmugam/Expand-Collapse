@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expand Collapse - jQuery Plugin</title>
+  <style>
+	.icon-img {
+		width: 15px;
+		height: 15px;
+		cursor: pointer;
+		display: inline-block;
+	}
+	.icon-img.icon-open {
+		background: no-repeat url(arrow-down-icon.png);
+		background-size: 100%;
+	}
+	.icon-img.icon-close {
+		background: no-repeat url(arrow-up-icon.png);
+		background-size: 100%;
+	}
+  </style>
+</head>
+<body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
+	(function($) {
+		$.fn.expandCollapse = function(e, htmlTemplate) { //function(event, html template){} 
+			var $that = $(e.target);
+			if($that.hasClass("icon-open")) {
+			  $that.parents('.expand-header').next().append(htmlTemplate);
+			  $that.removeClass('icon-open').addClass('icon-close');
+			} else {
+			  $that.parents('.expand-header').next().empty();
+			  $that.removeClass('icon-close').addClass('icon-open');
+			}
+			return true;
+		}
+	}(jQuery));
+	
+	$(document).ready(function(){
+		$('.icon-img').on('click', function(e){
+			$(this).expandCollapse(e, '<div>Content</div>');
+		});
+	});
+	</script>
+</body>
+</html>
+<h3>Expand Collapse</h3>
+<table>
+	<thead>
+		<tr>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="expand-header">
+			<td><span class="text icon-expand">Header <a class="icon-img icon-open"></a></span></td>
+		</tr>
+		<tr class="expand-content"></tr>
+		<tr class="expand-header">
+			<td><span class="text icon-expand">Header <a class="icon-img icon-open"></a></span></td>
+		</tr>
+		<tr class="expand-content"></tr>
+		<div class="expand-header"><span class="text icon-expand">Header <a class="icon-img icon-open"></a></span></div>
+		<div class="expand-content"></div>
+	</tbody>
+</table>
