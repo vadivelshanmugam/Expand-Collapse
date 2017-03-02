@@ -17,3 +17,5 @@ $('.icon-img').on('click', function(e){
 <div class="expand-header"><span class="text icon-expand">Header <a class="icon-img icon-open"></a></span></div>
 <div class="expand-content"></div>
 ```
+### Library
+jQuery
